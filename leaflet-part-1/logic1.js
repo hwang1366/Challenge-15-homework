@@ -64,3 +64,20 @@ function createFeatures(earthquakeData) {
         return div;
 
         };
+        legend.addTo(myMap);
+    
+    
+    
+    function markerSize(magnitude) {
+        return magnitude * 5;
+    }
+    
+    // Change marker color based on depth
+    function markerColor(depth) {
+        return depth > 90 ? '#d73027' :
+                depth > 70 ? '#fc8d59' :
+                depth > 50 ? '#fee08b' :
+                depth > 30 ? '#d9ef8b' :
+                depth > 10 ? '#91cf60' :
+                             '#1a9850' ;          
+    }
