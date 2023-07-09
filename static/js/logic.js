@@ -87,4 +87,3 @@ function getColor(magnitude) {
           return div; 
         
           legend.addTo(myMap);
-      
