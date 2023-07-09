@@ -16,7 +16,7 @@ function createMarker(feature, latlng) {
       fillOpacity: 1
   });
 }
-function createFeatures(earthquakeData, plateData) {
+function createFeatures(earthquakeData) {
   function onEachFeature(feature, layer) {
       layer.bindPopup(`<h3>Location:</h3> ${feature.properties.place}<h3> Magnitude:</h3> ${feature.properties.mag}<h3> Depth:</h3> ${feature.geometry.coordinates[2]}`);
   }}
@@ -24,17 +24,9 @@ function createFeatures(earthquakeData, plateData) {
     onEachFeature: onEachFeature,
     pointToLayer: createMarker
 });
-let plates = L.geoJSON(plateData, {
-  style: function() {
-      return {
-          color: "blue",
-          weight: 2.5
-      }
-  }
-});
 
-createMap(earthquakes, plates);
-function createMap(earthquakes, plates) {
+createMap(earthquakes);
+function createMap(earthquakes) {
   
   let street = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -93,7 +85,7 @@ function markerSize(magnitude) {
   return magnitude * 5;
 }
 
-// Change marker color based on depth
+
 function markerColor(depth) {
   return depth > 90 ? '#d73027' :
           depth > 70 ? '#fc8d59' :
