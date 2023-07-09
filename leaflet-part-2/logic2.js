@@ -28,3 +28,13 @@ function createFeatures(earthquakeData, plateData) {
     onEachFeature: onEachFeature,
     pointToLayer: createMarker
 });
+let plates = L.geoJSON(plateData, {
+  style: function() {
+      return {
+          color: "blue",
+          weight: 2.5
+      }
+  }
+});
+
+createMap(earthquakes, plates);
