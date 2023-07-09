@@ -44,3 +44,17 @@ function getColor(magnitude) {
           return "#98ee00";
         }
       }
+    return magnitude * 4;
+     
+      L.geoJson(data, {
+        
+        pointToLayer: function(feature, latlng) {
+          return L.circleMarker(latlng);
+        },
+        
+        style: styleInfo,
+        
+        onEachFeature: function(feature, layer) {
+          layer.bindPopup("Magnitude: " + feature.properties.mag + "<br>Location: " + feature.properties.place);
+        }
+      }).addTo(myMap);
