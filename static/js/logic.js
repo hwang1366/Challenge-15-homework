@@ -62,3 +62,20 @@ function getColor(magnitude) {
           layer.bindPopup("Magnitude: " + feature.properties.mag + "<br>Location: " + feature.properties.place);
         }
       }).addTo(myMap);
+      var legend = L.control({
+        position: "bottomright"
+      });
+    
+      
+      legend.onAdd = function() {
+        var div = L.DomUtil.create("div", "info legend");
+    
+        var grades = [0, 1, 2, 3, 4, 5];
+        var colors = [
+          "#98ee00",
+          "#d4ee00",
+          "#eecc00",
+          "#ee9c00",
+          "#ea822c",
+          "#ea2c2c"
+        ]};
